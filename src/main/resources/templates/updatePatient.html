@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <form action="#" th:action="@{/admin/updatePatientById}" th:object="${patient}" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Surname</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                        <input type="text" th:field="*{name}" />
+                    </td>
+                    <td>
+                        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+                        <input type="text" th:field="*{surname}" />
+                    </td>
+                    <td>
+                        <input type="hidden" name="id" th:value="${patient.getUserId()}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Submit" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${errorMessage != null}">
+            <h1>Error</h1>
+            <p th:text="${errorMessage}"></p>
+        </div>
+    </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

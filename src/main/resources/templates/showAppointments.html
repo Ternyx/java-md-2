@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div th:if="${targetPatient != null}" class="container">
+            <h1>
+                <span>
+                    Target Patient
+                </span>
+                <span th:text="${targetPatient.getName()}"></span>
+                <span th:text="${targetPatient.getSurname()}"></span>
+            </h1>
+        </div>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <span th:if="${targetPatient == null}">
+                        <th scope="col">Patient name</th>
+                        <th scope="col">Patient surname</th>
+                    </span>
+                    <th scope="col">Doctor name</th>
+                    <th scope="col">Doctor surname</th>
+                    <th scope="col">Doctor type</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody th:each="appointment : ${appointments}">
+                <tr>
+                    <span th:if="${targetPatient == null}">
+                        <td th:text="${appointment.getPatient().getName()}"></td>
+                        <td th:text="${appointment.getPatient().getSurname()}"></td>
+                    </span>
+                  <td th:text="${appointment.getDoctor().getName()}"></td>
+                  <td th:text="${appointment.getDoctor().getSurname()}"></td>
+                  <td th:text="${appointment.getDoctor().getType()}"></td>
+                  <td th:text="${appointment.getDate()}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${count}">
+            <h3>
+                <span> Appointment count: </span>
+                <span th:text="${count}">
+            </h3>
+        </div>
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <form action="#" th:action="@{/doctor/register}" th:object="${doctor}" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <td>Username</td>
+                    <td>Password</td>
+                    <td>Name</td>
+                    <td>Surname</td>
+                    <td>Type</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                        <input type="text" th:field="*{username}" />
+                    </td>
+                    <td>
+                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                        <input type="password" th:field="*{password}" />
+                    </td>
+                    <td>
+                        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                        <input type="text" th:field="*{name}" />
+                    </td>
+                    <td>
+                        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+                        <input type="text" th:field="*{surname}" />
+                    </td>
+                    <td>
+                        <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+                        <select th:field="*{type}">
+                            <option 
+                                th:each="doctorType : ${T(com.github.ternyx.models.enums.DoctorType).values()}" 
+                                th:value="${{doctorType}}" 
+                                th:text="${doctorType}"
+                            >
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Submit" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${errorMessage != null}">
+            <h1>Error</h1>
+            <p th:text="${errorMessage}"></p>
+        </div>
+    </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

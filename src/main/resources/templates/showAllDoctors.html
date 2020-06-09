@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            <tbody th:each="doctor : ${doctors}">
+                <tr>
+                  <td th:text="${doctor.getName()}"></td>
+                  <td th:text="${doctor.getSurname()}"></td>
+                  <td th:text="${doctor.getType()}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
