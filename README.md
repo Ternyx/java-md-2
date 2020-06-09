@@ -14,12 +14,7 @@ Admin accounts have access to all routes, however, no admin "checking" has been 
 
 Here are some pre-created user accounts
 
-|----------|----------|---------|-------------------|
 | Login    | Password | Role    | Routes            |
-|----------|----------|---------|-------------------|
 | admin    | password | ADMIN   | *                 |
-|----------|----------|---------|-------------------|
 | patient1 | password | PATIENT | /patient          |
-|----------|----------|---------|-------------------|
 | doctor1  | password | DOCTOR  | /doctor, /doctors |
-|----------|----------|---------|-------------------|
